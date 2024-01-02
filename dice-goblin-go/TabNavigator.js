@@ -8,7 +8,10 @@ export const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{
+      tabBarStyle: { backgroundColor: '#110e35' },
+      headerStyle: { backgroundColor: '#110e35' },
+    }}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Dice" component={DiceScreen} />
       <Tab.Screen name="Stats" component={StatsScreen} />
