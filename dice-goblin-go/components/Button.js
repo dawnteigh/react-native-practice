@@ -1,8 +1,10 @@
-import { Pressable } from "react-native"
+import { Pressable, Text } from "react-native"
 
 const Button = ({ text }) => {
   return (
-    <Pressable>{text}</Pressable>
+    <Pressable>
+      <Text>{text}</Text>
+    </Pressable>
   )
 }
 
