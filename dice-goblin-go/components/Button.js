@@ -1,8 +1,8 @@
 import { Pressable, Text } from "react-native"
 
-const Button = ({ text }) => {
+const Button = ({ text, onClick }) => {
   return (
-    <Pressable>
+    <Pressable onPressOut={onClick}>
       <Text>{text}</Text>
     </Pressable>
   )
