@@ -19,7 +19,12 @@ const store = (set) => ({
     })
     set(store => ({ dice: [...store.dice, newDie] }), false, 'addDie')
   },
-  deleteTask: (title) => set(store => ({ tasks: store.tasks.filter(t => t.title !== title) }), false, 'deleteTask'),
+  deleteDie: (id) => {
+    fetch(`http://localhost:9292/dice/${id}`, {
+      method: "DELETE",
+    })
+    set(store => ({ dice: store.dice.filter(d => d.id !== id) }), false, 'deleteDie')
+  },
   setShowDie: (id) => set({ showDie: dice.find(d => d.id === id) }, false, 'setShowDie')
 })
 
