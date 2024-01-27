@@ -6,7 +6,7 @@ const store = (set) => ({
   dice: [],
   showDie: null,
   addDie: async (data) => {
-    const newDie = await fetch("http://localhost:9292/dice", {
+    const res = await fetch("http://localhost:9292/dice", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -17,10 +17,11 @@ const store = (set) => ({
         image_url: data.image_url
       })
     });
+    const newDie = res.json();
     set(store => ({ dice: [...store.dice, newDie] }), false, 'addDie');
   },
   editDie: async ({ id, data }) => {
-    const updatedDie = await fetch(`http://localhost:9292/dice/${id}`, {
+    const res = await fetch(`http://localhost:9292/dice/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -30,6 +31,7 @@ const store = (set) => ({
         image_url: data.image_url
       })
     });
+    const updatedDie = res.json();
     set(store => ({ dice: store.dice.map(d => d.id === id ? updatedDie : d) }), false, 'editDie');
 
   },
