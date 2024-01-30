@@ -1,4 +1,4 @@
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/native-stack";
 import { DieShowScreen } from "./screens/DieShowScreen";
 
 import React from 'react'
