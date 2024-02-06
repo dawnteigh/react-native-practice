@@ -4,6 +4,15 @@
     "slug": "dice-goblin-go",
     "version": "1.0.0",
     "orientation": "portrait",
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Dice Goblin access to your photos?",
+          "cameraPermission": "Allow Dice Goblin to access your camera?"
+        }
+      ]
+    ],
     "icon": "./assets/dice-goblin-go-icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
