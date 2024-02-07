@@ -8,7 +8,6 @@ export default function ImagePickerExample() {
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [1, 1],
       quality: 1,
@@ -21,14 +20,23 @@ export default function ImagePickerExample() {
     }
   };
 
-  // const openCamera = async () => {
-
-  // }
+  const openCamera = async () => {
+    let permission = await ImagePicker.requestCameraPermissionsAsync();
+    if (permission.granted) {
+      let response = await ImagePicker.launchCameraAsync({
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 1,
+      })
+      response && setImage(response.assets[0].uri)
+    }
+    else alert('You need to grant Dice Goblin permission to access your camera')
+  }
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button title="Pick an image from camera roll..." onPress={pickImage} />
-      {/* <Button title="Or take a new photo" onPress={openCamera} /> */}
+      <Button title="Or take a new photo" onPress={openCamera} />
       {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
     </View>
   );
