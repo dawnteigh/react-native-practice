@@ -4,11 +4,11 @@ import { relations } from 'drizzle-orm';
 export const dice = sqliteTable('dice', {
   id: integer('id').primaryKey(),
   description: text('description'),
-  dieType: text('dieType'),
+  dieType: text('die_type'),
   image: text('image'),
-  numOfValues: integer('numOfValues'),
-  totalRolls: integer('totalRolls').default(0),
-  averageRoll: real('averageRoll').default(0.0)
+  numOfValues: integer('num_of_values'),
+  totalRolls: integer('total_rolls').default(0),
+  averageRoll: real('average_roll').default(0.0)
 });
 
 export const diceRelations = relations(dice, ({ many }) => ({
@@ -18,8 +18,8 @@ export const diceRelations = relations(dice, ({ many }) => ({
 export const values = sqliteTable('values', {
   id: integer('id').primaryKey(),
   value: integer('value'),
-  dieId: integer('dieId').references(() => dice.id),
-  timesRolled: integer('timesRolled').default(0)
+  dieId: integer('die_id').references(() => dice.id),
+  timesRolled: integer('times_rolled').default(0)
 });
 
 export const valuesRelations = relations(values, ({ one }) => ({
