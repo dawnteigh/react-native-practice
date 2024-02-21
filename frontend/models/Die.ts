@@ -1,5 +1,3 @@
-import { Value } from "./Value";
-
 export class Die {
   description: string;
   dieType: string;
@@ -7,7 +5,6 @@ export class Die {
   numOfValues: number;
   totalRolls: number;
   averageRoll: number;
-  values: Value[];
 
   constructor(description: string, dieType: string, image: string) {
     this.description = description;
@@ -16,7 +13,6 @@ export class Die {
     this.numOfValues = this.findNumOfValues(dieType);
     this.totalRolls = 0;
     this.averageRoll = 0;
-    // create value objects for the type of die
   }
 
   findNumOfValues(type: string): number {
@@ -25,7 +21,8 @@ export class Die {
     else return parseInt(type)
   }
 
-  createValues(type: string): void {
-
+  createValues(): void {
+    // I want to create related value objects depending on dieType
+    if (this.dieType === 'd%') { }
   }
 }
