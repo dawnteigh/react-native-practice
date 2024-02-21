@@ -1,4 +1,5 @@
 export class Die {
+  id: number;
   description: string;
   dieType: string;
   image: string;
@@ -19,10 +20,5 @@ export class Die {
     if (type === 'd%') return 10;
     if (type === '2d6') return 11;
     else return parseInt(type)
-  }
-
-  createValues(): void {
-    // I want to create related value objects depending on dieType
-    if (this.dieType === 'd%') { }
   }
 }
